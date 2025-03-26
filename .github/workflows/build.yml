@@ -23,14 +23,12 @@ jobs:
         path: keyboards/sofle/keymaps/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile -c -e CONVERT_TO=liatris -kb sofle -km "${{ github.actor }}/sofle"
+      run: qmk compile -c -e CONVERT_TO=liatris -kb sofle -km "${{ github.actor }}"
 
     - name: Archive firmware
       uses: actions/upload-artifact@v4
       continue-on-error: true
       with:
-        name: ${{ matrix.file }}_${{ github.actor }}
+        name: sofle-${{ github.actor }}-firmware
         path: |
-          *.hex
-          *.bin
           *.uf2
