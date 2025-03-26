@@ -5,11 +5,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
-    strategy:
-      fail-fast: false
-      matrix:
-        keymap: [sofle]
-# End of json file list
 
     steps:
 
@@ -25,10 +20,10 @@ jobs:
     - name: Checkout userspace
       uses: actions/checkout@v3
       with:
-        path: users/${{ github.actor }}
+        path: keyboards/sofle/keymaps/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile -c -e CONVERT_TO=liatris -kb sofle -km "users/${{ github.actor }}/${{ matrix.keymap }}"
+      run: qmk compile -c -e CONVERT_TO=liatris -kb sofle -km "${{ github.actor }}/sofle"
 
     - name: Archive firmware
       uses: actions/upload-artifact@v4
