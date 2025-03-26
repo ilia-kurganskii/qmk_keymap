@@ -181,7 +181,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
 		} else if (index == 1) {
 			switch (get_highest_layer(layer_state)) {
-				case _COLEMAK:
 				case _QWERTY:
 				case _COLEMAKDH:
 					if (clockwise) {
