@@ -17,7 +17,7 @@ enum custom_keycodes {
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
-    KC_D_MUTE
+    KC_D_MUTE,
     KC_PRVWD,
     KC_NXTWD,
     KC_LSTRT,
