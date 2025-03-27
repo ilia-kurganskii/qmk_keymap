@@ -25,9 +25,6 @@ jobs:
     - name: Build firmware
       run: qmk compile -c -e CONVERT_TO=liatris -kb sofle -km "${{ github.actor }}"
 
-    - name: Build json
-      run:  qmk c2json -kb sofle -km "${{ github.actor }}" -o sofle-${{ github.actor }}.json
-
     - name: Archive firmware
       uses: actions/upload-artifact@v4
       continue-on-error: true
@@ -35,10 +32,3 @@ jobs:
         name: sofle-${{ github.actor }}-firmware
         path: |
           *.uf2
-          
-    - name: Archive json
-      uses: actions/upload-artifact@v4
-      with:
-        name: sofle-${{ github.actor }}-json
-        path: |
-          sofle-${{ github.actor }}.json
