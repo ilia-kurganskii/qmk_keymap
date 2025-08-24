@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
-[_SYM] = LAYOUT(4
+[_SYM] = LAYOUT(
   _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   _______,
   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,   _______,
   _______, LCTL_T(KC_1), LALT_T(KC_2), LGUI_T(KC_3), LSFT_T(KC_4), KC_5, KC_6, RSFT_T(KC_7), RGUI_T(KC_8), LALT_T(KC_9), RCTL_T(KC_0), _______,
