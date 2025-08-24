@@ -7,8 +7,8 @@
 enum sofle_layers {
     _QWERTY,
     _COLEMAKDH,
-    _LOWER,
-    _RAISE,
+    _NAV,
+    _SYM,
     _ADJUST,
 };
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,    KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                        KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_BSPC,
     KC_TAB,    HOME_A,     HOME_S,     HOME_D,     HOME_F,     KC_G,                        KC_H,       HOME_J,     HOME_K,     HOME_L,     HOME_SCLN,  KC_QUOT,
     KC_LSFT,   KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,    KC_MUTE, KC_D_MUTE, KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,
-                           KC_LGUI,    KC_LALT,    MO(_LOWER), KC_SPC,  LT(_LOWER, KC_TAB), LT(_RAISE, KC_ENT), KC_BSPC, MO(_RAISE), KC_RALT, KC_RGUI
+            KC_LGUI,    KC_LALT,    LT(_SYM,KC_ESC), LT(_NAV,KC_SPC),   KC_TAB,  KC_ENT,    KC_BSPC, LT(_ADJUST,KC_BSPC),        KC_RALT, KC_RGUI
 ),
 
 
@@ -74,21 +74,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   |  |
+ * | Tab  |  TRN |  TRN |  TRN |  TRN |   %  |-------.    ,-------|   ^  |  TRN |  TRN |  TRN |  TRN |   |  |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * | Shift|  =   |  -   |  +   |   {  |   }  |-------|    |-------|   [  |   ]  |   ;  |   :  |   \  | Shift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LGUI | LAlt | LCTR |LOWER | /Enter  /       \Space \  |RAISE | RCTR | RAlt | RGUI |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
  */
-[_LOWER] = LAYOUT(
-  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-  KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_F12,
-  _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-  _______,  KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
-                       _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+[_NAV] = LAYOUT(
+  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  KC_F12,
+  _______, _______, _______, _______, _______, _______,                         KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
+
+
+
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -103,13 +103,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
-[_RAISE] = LAYOUT(
-  _______, _______ , _______ , _______ , _______ , _______,                           _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______,  KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX, XXXXXXX,                        KC_PGUP, KC_PRVWD,   KC_UP, KC_NXTWD,C(KC_BSPC), KC_BSPC,
-  _______, KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX, KC_CAPS,                       KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_BSPC,
-  _______, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), XXXXXXX,  _______,       _______,  XXXXXXX, KC_LSTRT, XXXXXXX, KC_LEND,   XXXXXXX, _______,
-                         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+ 
+[_SYM] = LAYOUT(
+  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  KC_F12,
+  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
+
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -176,8 +178,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 						tap_code(KC_PGUP);
 					}
 				break;
-			case _RAISE:
-			case _LOWER:
+			case _SYM:
+			case _NAV:
 					if (clockwise) {
 						tap_code(KC_DOWN);
 					} else {
@@ -239,11 +241,11 @@ static void print_status_narrow(void) {
         case _COLEMAKDH:
             oled_write_P(PSTR("Base\n"), false);
             break;
-        case _RAISE:
-            oled_write_P(PSTR("Raise"), false);
+        case _NAV:
+            oled_write_P(PSTR("Nav"), false);
             break;
-        case _LOWER:
-            oled_write_P(PSTR("Lower"), false);
+        case _SYM:
+            oled_write_P(PSTR("Sym"), false);
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adj\n"), false);
