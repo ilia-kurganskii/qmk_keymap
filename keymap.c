@@ -198,12 +198,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
                 
             default:
-                // Other layers: Mouse wheel
-                if (clockwise) {
-                    tap_code(KC_WH_D);
-                } else {
-                    tap_code(KC_WH_U);
-                }
                 break;
         }
     }
